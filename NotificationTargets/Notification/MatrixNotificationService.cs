@@ -16,8 +16,9 @@ namespace NotificationTargets.Notification
         private const string BaseUrl = "https://matrix.org/_matrix";
         private const string _roomId = "Notification:Matrix:RoomId", _accessToken = "Notification:Matrix:AccessToken";
 
-        public MatrixNotificationService(IConfiguration configuration)
+        public MatrixNotificationService(HttpClient httpClient, IConfiguration configuration)
         {
+            _httpClient = httpClient;
             _configuration = configuration;
         }
 
