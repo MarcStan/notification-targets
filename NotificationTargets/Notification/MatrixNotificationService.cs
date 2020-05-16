@@ -25,7 +25,7 @@ namespace NotificationTargets.Notification
             !string.IsNullOrEmpty(_configuration[_roomId]) &&
             !string.IsNullOrEmpty(_configuration[_accessToken]);
 
-        public async Task SendNotificationAsync(MessageModel message, CancellationToken cancellationToken)
+        public async Task SendNotificationAsync(MessageModel messageModel, CancellationToken cancellationToken)
         {
             if (!IsActive)
                 return;
@@ -35,6 +35,7 @@ namespace NotificationTargets.Notification
 
             var roomId = _configuration[_roomId];
             var accessToken = _configuration[_accessToken];
+            var message = messageModel.ToString();
             var json = JsonConvert.SerializeObject(new
             {
                 // https://github.com/matrix-org/matrix-doc/pull/1397/files
